@@ -13,7 +13,7 @@ In this project, i was able to:
   <li>Work with ASYNC Functions!</li>
 </ul>
 
-The Shopping Cart is totally dinamic and consumes all the data straight from the Mercado Livre's:tm: API!
+The Shopping Cart is totally dinamic and consumes all the data straight from the Mercado Livre's:tm: API! </br>
 Let me know what you think about it!
 
 Enjoy! 👋
