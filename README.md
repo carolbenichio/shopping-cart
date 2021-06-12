@@ -5,7 +5,7 @@ Hey there!
 In this project, i was able to:
 
 <ul> 
-  <li>I was able to make API (Application Programming Interface) requests;</li>
+  <li>Make API (Application Programming Interface) requests;</li>
   <li>Manipulating DOM;</li>
   <li>Manipulating HTML;</li>
   <li>Manipulating JavaScript;</li>
