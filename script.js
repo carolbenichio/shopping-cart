@@ -41,7 +41,7 @@ const sumPrice = () => {
   const cartItemArray = Array.prototype.map.call(cartItem, (li) =>
     Number(li.innerHTML.slice(li.innerHTML.indexOf('$') + 1)));
   const totalPrice = cartItemArray.reduce((acc, curr) => acc + curr, 0);
-  currentPrice.innerHTML = totalPrice;
+  currentPrice.innerHTML = `Preço total: R$${Number(totalPrice.toFixed(2))}`;
 };
 
 // 3
