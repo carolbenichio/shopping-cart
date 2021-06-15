@@ -9,18 +9,30 @@
   </head>
   <body>
     <header>
-      <h1>Shopping cart</h1>
-      <img src="./images/shopping-cart.png">
+      <div class="shop-cart">
+        <h1>Shopping cart</h1>
+        <img src="./images/shopping-cart.png">
+      </div>
+      <div class="search-container">
+        <input class="search" type="text" placeholder="computador, ventilador, celular..." size="30px">
+        <button id="search-btn">Buscar</button>
+      </div>
     </header>
     <section class="container">
       <section class="loading">Loading...</section>
       <section class="items"></section>
       <section class="cart">
-        <span class="cart__title">Carrinho de compras</span>
+        <span class="cart__title">CARRINHO DE COMPRAS</span>
         <button class="empty-cart">Esvaziar carrinho</button>
+        <span class="clique"><em>Ou clique no item para removê-lo</em></span>
         <ol class="cart__items"></ol>
       </section>
     </section>
+    <footer>
+      <span>© ALL RIGHTS RESERVED</span>
+      <span><em>Made by Caroline Benichio Teixeira 	
+        &#128420;</em></span>
+    </footer>
   </body>
   <script src="./script.js"></script>
 </html>

@@ -1,5 +1,6 @@
 const items = document.getElementsByClassName('items');
 const cartItems = document.querySelector('.cart__items');
+const search = document.querySelector('search');
 
 // 1
 function createProductImageElement(imageSource) {
@@ -39,24 +40,33 @@ const sumPrice = () => {
   const currentPrice = document.querySelector('.total-price');
   const cartItem = document.querySelectorAll('.cart__item');
   const cartItemArray = Array.prototype.map.call(cartItem, (li) =>
-    Number(li.innerHTML.slice(li.innerHTML.indexOf('$') + 1)));
+    Number(li.innerHTML.slice(li.innerHTML.indexOf('$') + 1, li.innerHTML.indexOf('<'))));
   const totalPrice = cartItemArray.reduce((acc, curr) => acc + curr, 0);
-  currentPrice.innerHTML = `Preço total: R$${Number(totalPrice.toFixed(2))}`;
+  currentPrice.innerHTML = `Preço total: R$ ${Number(totalPrice.toFixed(2))}`;
 };
 
 // 3
 function cartItemClickListener(event) {
-  event.target.parentNode.removeChild(event.target);
+  if (event.target.tagName === 'IMG') {
+    event.target.parentNode.remove();
+  } else {
+  event.target.remove();
+  }
   localStorage.setItem('items', cartItems.innerHTML);
   sumPrice();
 }
 
 // 2
-function createCartItemElement({ id: sku, title: name, price: salePrice }) {
+function createCartItemElement({ id: sku, title: name, price: salePrice, thumbnail }) {
   const li = document.createElement('li');
+  const img = document.createElement('img');
+  img.classList.add('cart-img');
+  img.src = thumbnail;
   li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.innerText += `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.appendChild(img);
   li.addEventListener('click', cartItemClickListener);
+  img.addEventListener('click', cartItemClickListener);
   return li;
 }
 
@@ -94,7 +104,7 @@ function loadingAlert() {
 }
 
 // 1
-const fetchAPI = async () => { 
+const fetchAPI = async () => {
   const API_URL = 'https://api.mercadolibre.com/sites/MLB/search?q=computador';
   const api = await fetch(API_URL); // pega, pelo API, os produtos consultados
   const apiJSON = await api.json(); // transforma a promise em JSON
