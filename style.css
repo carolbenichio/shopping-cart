@@ -73,7 +73,7 @@
 }
 
 .item .item__add {
-  background-color: rgb(180, 210, 248);
+  background-color: rgb(124, 174, 238);
   border: 0;
   cursor: pointer;
   margin: auto;
@@ -86,6 +86,7 @@
 .item__add:hover {
   font-weight: 600;
   transform: scale(1.05);
+  background-color: rgb(183, 207, 238);
 }
 
 .cart {
@@ -102,7 +103,7 @@
 
 .cart__title {
   flex-basis: 1;
-  font-size: 25px;
+  font-size: 28px;
   text-align: center;
   margin: 20px;
   width: 440px;

@@ -1,6 +1,6 @@
 const items = document.getElementsByClassName('items');
 const cartItems = document.querySelector('.cart__items');
-const search = document.querySelector('search');
+const searchBtn = document.getElementById('search-btn');
 
 // 1
 function createProductImageElement(imageSource) {
@@ -104,8 +104,9 @@ function loadingAlert() {
 }
 
 // 1
-const fetchAPI = async () => {
-  const API_URL = 'https://api.mercadolibre.com/sites/MLB/search?q=computador';
+const fetchAPI = async (searchWord) => {
+  console.log(searchWord);
+  const API_URL = `https://api.mercadolibre.com/sites/MLB/search?q=${searchWord}`;
   const api = await fetch(API_URL); // pega, pelo API, os produtos consultados
   const apiJSON = await api.json(); // transforma a promise em JSON
   const arrayResult = apiJSON.results; // pega só o 'results' do retorno
@@ -121,8 +122,23 @@ function deleteItems() {
   sumPrice();
 }
 
+const search = document.querySelector('.search');
+function searchItem() {
+  console.log(search);
+  items[0].innerHTML = '';
+  items[0].innerHTML = '<section class="loading">Loading...</section>';
+  fetchAPI(search.value);
+}
+
+search.addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    searchItem(search.value);
+  }
+});
+searchBtn.addEventListener('click', searchItem);
+
 window.onload = function onload() {
-  fetchAPI();
+  fetchAPI('computador');
   getItems();
   
   const emptyButton = document.querySelector('.empty-cart');
